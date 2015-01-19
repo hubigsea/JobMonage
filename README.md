@@ -11,9 +11,9 @@
 
 ###trigger各状态说明
 
-* None：Trigger已经完成，且不会在执行，或者找不到该触发器，或者Trigger已经被删除
-* NORMAL:正常状态
-* PAUSED：暂停状态
-* COMPLETE：触发器完成，但是任务可能还正在执行中
-* BLOCKED：线程阻塞状态
-* ERROR：出现错误
+* `None`：Trigger已经完成，且不会在执行，或者找不到该触发器，或者Trigger已经被删除
+* `NORMAL`:正常状态
+* `PAUSED`：暂停状态
+* `COMPLETE`：触发器完成，但是任务可能还正在执行中
+* `BLOCKED`：线程阻塞状态
+* `ERROR`：出现错误
