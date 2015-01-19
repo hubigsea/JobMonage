@@ -1,0 +1,5 @@
+#surefire
+#Sun Aug 03 21:44:06 CST 2014
+user.dir=E\:\\myworkspace\\JobManager
+localRepository=E\:\\repository\\maven
+basedir=E\:\\myworkspace\\JobManager

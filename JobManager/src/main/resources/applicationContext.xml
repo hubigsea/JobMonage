@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+			http://www.springframework.org/schema/context
+           	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           	http://www.springframework.org/schema/task
+			http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+	<context:annotation-config />
+
+	<!-- 自动扫描(自动注入) -->
+	<context:component-scan base-package="cn.zto" />
+
+	<bean id="DataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="url" value="jdbc:mysql:///quartz" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
+		<!-- 连接池最大使用连接数量 -->
+		<property name="maxActive" value="5" />
+		<!-- 初始化大小 -->
+		<property name="initialSize" value="1" />
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="60000" />
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="2" />
+		<!-- 逐出连接的检测时间间隔 -->
+		<property name="timeBetweenEvictionRunsMillis" value="3000" />
+		<!-- 最小逐出时间 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<!-- 测试有效用的SQL Query -->
+		<property name="validationQuery" value="SELECT 'x'" />
+		<!-- 连接空闲时测试是否有效 -->
+		<property name="testWhileIdle" value="true" />
+		<!-- 获取连接时测试是否有效 -->
+		<property name="testOnBorrow" value="false" />
+		<!-- 归还连接时是否测试有效 -->
+		<property name="testOnReturn" value="false" />
+	</bean>
+
+	<!-- 声明工厂 -->
+	<bean id="scheduler" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="schedulerName" value="TestScheduler1"/>
+		<property name="dataSource" ref="DataSource" />
+		<property name="configLocation" value="classpath:quartz.properties" />
+		<!--applicationContextSchedulerContextKey： 
+		是org.springframework.scheduling.quartz.SchedulerFactoryBean这个类中
+		把spring上下 文以key/value的方式存放在了quartz的上下文中了，
+		可以用applicationContextSchedulerContextKey所定义的key得到对应的spring上下文-->  
+		<property name="applicationContextSchedulerContextKey" value="applicationContextKey"/>     
+	</bean>
+</beans>
