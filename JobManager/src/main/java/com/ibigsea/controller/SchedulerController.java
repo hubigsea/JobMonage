@@ -1,4 +1,4 @@
-package cn.zto.controller;
+package com.ibigsea.controller;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.zto.service.JobService;
-import cn.zto.vo.PageTrigger;
+import com.ibigsea.service.JobService;
+import com.ibigsea.vo.PageTrigger;
 
 /**
  * 控制器

@@ -1,4 +1,4 @@
-package cn.zto.vo;
+package com.ibigsea.vo;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package cn.zto.service;
+package com.ibigsea.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import cn.zto.vo.PageTrigger;
+import com.ibigsea.vo.PageTrigger;
 
 @Repository("jobService")
 public class JobService {

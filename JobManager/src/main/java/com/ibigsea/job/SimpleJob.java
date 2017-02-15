@@ -1,4 +1,4 @@
-package cn.zto.job;
+package com.ibigsea.job;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
